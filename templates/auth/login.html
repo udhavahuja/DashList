@@ -1,0 +1,22 @@
+{% extends 'auth_layout.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="email" placeholder="Email" type="text"></input>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password"></input>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+
+    <p>
+        Don't have an account?
+        <a href="/register">Register Here</a>
+    </p>
+{% endblock %}

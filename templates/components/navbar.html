@@ -1,0 +1,35 @@
+{% block nav %}
+    <nav class="nav">
+        <div class="logo">
+            <a href="/">
+                <img src="" alt="Dashlist logo" id="logo">
+            </a>
+        </div>
+        <div class="options">
+            <ul>
+                <li>
+                    <a href="/">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/browse">Browse</a>
+                </li>
+                <li>
+                    <a href="/library">Library</a>
+                </li>
+                <li>
+                    <form action="{{ url_for('auth_bp.logout') }}" method="POST">
+                        <button type="submit" class="logoutBtn">Logout</button>
+                    </form>
+                </li>
+                <li>
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
