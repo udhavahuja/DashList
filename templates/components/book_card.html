@@ -1,13 +1,13 @@
-{% block media_card %}
+{% block book_card %}
     <div class="card h-100">
-        <img src="{{ media.cover_url }}" alt="{{ media.title }}" class="card-img-top">
+        <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="card-img-top">
 
         <div class="card-body">
-            <h5 class="card-title"> {{ media.title }} </h5>
+            <h5 class="card-title"> {{ book.title }} </h5>
             <p class="card-text">
-                {{ media.type | capitalize }} . {{ media.release_year }}
+                {{ book.authors | capitalize }} . {{ book.year }}
             </p>
-            <p class="card-text"> {{ media.description }} </p>
+            <p class="card-text"> {{ book.description }} </p>
         </div>
 
         <div class="card-footer">

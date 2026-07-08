@@ -23,8 +23,8 @@ def search_media(query, media_type):
     for content in data["results"]:
 
         #Check if poster url is none
-        if content["poster_path"] is not None:
-            cover= TMDB_IMG_URL + content["poster_path"]
+        if content["poster_path"]:
+            cover= TMDB_IMG_URL + content.get("poster_path")
         else:
             cover = None
 
@@ -37,8 +37,8 @@ def search_media(query, media_type):
             date = content["release_date"]
 
         #Checking if date is null
-        if date is not None:
-            release_year = int(date[:4])
+        if date:
+            release_year = int(date[0:4])
         else:
             release_year = None
 
@@ -48,7 +48,7 @@ def search_media(query, media_type):
             api_id= content["id"],
             title= title,
             media_type= media_type,
-            description= content["overview"],
+            description= content.get("overview", ""),
             release_year= release_year,
             cover_url= cover
             )
@@ -64,7 +64,11 @@ def search_books(query):
     params = {"key": GBOOKS_API_KEY, "q": query}
 
     response = requests.get(url, params=params)
-    data = response.json()
+
+    if response.status_code == 200:
+        data = response.json()
+    else:
+        return [{"error" : f"Code : {response.status_code}"}]
 
     books=[]
 
@@ -81,5 +85,5 @@ def search_books(query):
                 cover_url= info.get("imageLinks", {}).get("thumbnail")
             )
         )
-    
+
     return books

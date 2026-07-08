@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Browse
+{% endblock %}
+
+{% block body %}
+    <form action="" method="get"> 
+        <!-- Action to be filled -->
+        <input type="text" placeholder="Search" name="query" required>
+        <label for="media_type">Media Type</label>
+        <select name="media_type" id="media_type" required>
+            <option value="movie">Movies</option>
+            <option value="tv">TV Shows</option>
+            <option value="book">Books</option>
+        </select>
+        <button type="submit">Search</button>
+
+    </form>
+
+    <div class="row g-4">
+        {% if media_type == 'book' %}
+            {% if books %}
+                {% for book in books %}
+                    <div class="col-md-3">
+                        <pre>{{ book }}</pre>
+                        {% include "components/book_card.html" %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            {% if media_list %}
+                {% for media in media_list %}
+                    <div class="col-md-3">
+                        {% include "components/media_card.html" %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

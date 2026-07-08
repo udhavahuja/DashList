@@ -8,6 +8,7 @@ from utils.decorators import login_required
 
 #importing blueprints
 from routes.auth_routes import auth_bp
+from routes.browse_routes import browse_bp
 
 app = Flask(__name__)
 
@@ -18,6 +19,7 @@ Session(app)
 
 #Register blueprints
 app.register_blueprint(auth_bp)
+app.register_blueprint(browse_bp)
 
 @app.route("/")
 @login_required
