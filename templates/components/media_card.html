@@ -5,13 +5,21 @@
         <div class="card-body">
             <h5 class="card-title"> {{ media.title }} </h5>
             <p class="card-text">
-                {{ media.type | capitalize }} . {{ media.release_year }}
+                {{ media_type | capitalize }} . {{ media.release_year }}
             </p>
             <p class="card-text"> {{ media.description }} </p>
         </div>
 
         <div class="card-footer">
-            <form method="post">
+            <form method="post" action="/library/add">
+                <input type="hidden" name="api_id" value="{{ media.api_id }}">
+                <input type="hidden" name="source" value="{{ media.source }}">
+                <input type="hidden" name="title" value="{{ media.title }}">
+                <input type="hidden" name="media_type" value="{{ media_type }}">
+                <input type="hidden" name="description" value="{{ media.description }}">
+                <input type="hidden" name="release_year" value="{{ media.release_year }}">
+                <input type="hidden" name="cover_url" value="{{ media.cover_url }}">
+                <input type="hidden" name="authors" value= "">
                 <button class="btn btn-primary w-100">
                     Add to library
                 </button>

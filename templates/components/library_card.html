@@ -1,0 +1,52 @@
+{% block library_card %}
+    <div class="card h-100">
+        <img src="{{ item.cover_url }}" alt="{{ item.title }}" class="card-img-top">
+
+        <div class="card-body">
+            <h5 class="card-title"> {{ item.title }} </h5>
+            {% if item.type == "book" %}
+                <p class="card-text">
+                    {{ item_type | capitalize }} . {{ item.authors }} . {{ item.release_year }}
+                </p>
+            {% else %}
+                <p class="card-text">
+                    {{ item_type | capitalize }} . {{ item.release_year }}
+                </p>
+            {% endif %}
+            <p class="card-text"> {{ item.description }} </p>
+
+            <!-- Status -->
+            <p class="status">Status: {{ item.status }}</p>
+            <!-- Rating -->
+             <p class="rating">Your Rating: {{ item.rating }} </p>
+        </div>
+
+        <div class="card-footer">
+            <form method="post" action="/library/delete">
+                <input type="hidden" name="api_id" value="{{ item.api_id }}">
+                <input type="hidden" name="source" value="{{ item.source }}">
+                <input type="hidden" name="title" value="{{ item.title }}">
+                <input type="hidden" name="media_type" value="{{ media_type }}">
+                <input type="hidden" name="description" value="{{ item.description }}">
+                <input type="hidden" name="release_year" value="{{ item.release_year }}">
+                <input type="hidden" name="cover_url" value="{{ item.cover_url }}">
+                <input type="hidden" name="authors" value= "">
+                <button class="btn btn-primary w-100">
+                    Remove
+                </button>
+                <form method="post" action="/library/edit">
+                <input type="hidden" name="api_id" value="{{ item.api_id }}">
+                <input type="hidden" name="source" value="{{ item.source }}">
+                <input type="hidden" name="title" value="{{ item.title }}">
+                <input type="hidden" name="media_type" value="{{ media_type }}">
+                <input type="hidden" name="description" value="{{ item.description }}">
+                <input type="hidden" name="release_year" value="{{ item.release_year }}">
+                <input type="hidden" name="cover_url" value="{{ item.cover_url }}">
+                <input type="hidden" name="authors" value= "">
+                <button class="btn btn-primary w-100">
+                    Edit
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

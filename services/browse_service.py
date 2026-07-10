@@ -81,7 +81,7 @@ def search_books(query):
                 title= info.get("title"),
                 authors= ", ".join(info.get("authors", [])),
                 description=info.get("description"),
-                year= info.get("publishedDate", "")[:4],
+                release_year= info.get("publishedDate", "")[:4],
                 cover_url= info.get("imageLinks", {}).get("thumbnail")
             )
         )
