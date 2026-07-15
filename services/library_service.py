@@ -85,3 +85,17 @@ def edit_library(user_id, api_id, source, status, rating):
 
     cursor.close()
     conn.close()
+
+#Delete library card
+def delete_library(user_id, api_id, source):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    media_id = cursor.execute("SELECT id FROM media WHERE api_id = ? AND source = ?", (api_id, source)).fetchone()["id"]
+    entry_id = cursor.execute("SELECT id FROM entries WHERE user_id = ? AND media_id = ?", (user_id, media_id)).fetchone()["id"]
+
+    cursor.execute("DELETE FROM entries WHERE id = ?", (entry_id,))
+    conn.commit()
+
+    cursor.close()
+    conn.close()

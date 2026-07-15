@@ -1,7 +1,6 @@
 from flask import Blueprint, request, redirect, session, render_template
 
-from config.database import get_db
-from services.library_service import add_library, get_library, make_editable, edit_library
+from services.library_service import add_library, get_library, make_editable, edit_library, delete_library
 
 library_bp = Blueprint("library_bp", __name__)
 
@@ -45,11 +44,17 @@ def edit():
         source = request.form.get("source")
         status = request.form.get("status")
         rating = request.form.get("rating")
-        
-        print(user_id, api_id, source, status, rating)
 
         edit_library(user_id, api_id, source, status, rating)
 
         return redirect("/library")
         
+@library_bp.route("/library/delete", methods=["POST"])
+def delete_entry():
+    user_id = session.get("user_id")
+    api_id = request.form.get("api_id")
+    source = request.form.get("source")
 
+    delete_library(user_id, api_id, source)
+
+    return redirect("/library")
