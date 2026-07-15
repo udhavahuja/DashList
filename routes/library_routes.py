@@ -1,7 +1,7 @@
 from flask import Blueprint, request, redirect, session, render_template
 
 from config.database import get_db
-from services.library_service import add_library, get_library
+from services.library_service import add_library, get_library, make_editable, edit_library
 
 library_bp = Blueprint("library_bp", __name__)
 
@@ -27,3 +27,29 @@ def lib():
     library_items = get_library(user_id)
 
     return render_template("library/library.html", library_items=library_items)
+
+@library_bp.route("/library/edit", methods = ["GET", "POST"])
+def edit():
+    if request.method == "GET":
+        user_id = session.get("user_id")
+        source = request.args.get("source")
+        api_id = request.args.get("api_id")
+
+        item = make_editable(user_id=user_id, api_id=api_id, source=source)
+
+        return render_template("library/edit-library.html", item = item)
+    
+    if request.method == "POST":
+        user_id = session.get("user_id")
+        api_id = request.form.get("api_id")
+        source = request.form.get("source")
+        status = request.form.get("status")
+        rating = request.form.get("rating")
+        
+        print(user_id, api_id, source, status, rating)
+
+        edit_library(user_id, api_id, source, status, rating)
+
+        return redirect("/library")
+        
+

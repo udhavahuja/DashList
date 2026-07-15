@@ -117,3 +117,30 @@ body {
     cursor: pointer;
     padding: 0;
 }
+
+/* Stars */
+.rating {
+    font-size: 2rem;
+}
+
+.star {
+    cursor: pointer;
+    color: #b0b0b0;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.star.active {
+    color: gold;
+}
+
+.star:hover {
+    cursor: pointer;
+}
+
+/* Highlight checked and hovered stars */
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label { color: #ffcc00; }
+

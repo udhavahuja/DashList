@@ -39,7 +39,7 @@ def get_library(user_id):
     cursor= conn.cursor()
 
     library_items=[]
-    rows= cursor.execute("""SELECT title, cover_url, description, type, authors, release_year, status, rating, added_at
+    rows= cursor.execute("""SELECT media.api_id, media.source, title, cover_url, description, type, authors, release_year, status, rating, added_at
                          FROM entries 
                          JOIN media 
                          ON entries.media_id = media.id
@@ -52,3 +52,36 @@ def get_library(user_id):
     conn.close()
 
     return library_items
+
+def make_editable(user_id, api_id, source):
+    conn = get_db()
+    cursor= conn.cursor()
+
+    media_id = cursor.execute("SELECT id FROM media WHERE api_id = ? AND source = ?", (api_id, source)).fetchone()["id"]
+
+
+    row= cursor.execute("""SELECT media.api_id, media.source, media.title, media.cover_url, media.description, media.type, media.authors, media.release_year, entries.status, entries.rating, entries.added_at
+                         FROM entries 
+                         JOIN media 
+                         ON entries.media_id = media.id
+                         WHERE entries.user_id = ?
+                         AND entries.media_id = ?""", (user_id, media_id)).fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return row
+
+#Edit library card
+def edit_library(user_id, api_id, source, status, rating):
+    conn = get_db()
+    cursor= conn.cursor()
+    
+    media_id = cursor.execute("SELECT id FROM media WHERE api_id = ? AND source = ?", (api_id, source)).fetchone()["id"]
+    entry_id = cursor.execute("SELECT id FROM entries WHERE user_id = ? AND media_id = ?", (user_id, media_id)).fetchone()["id"]
+
+    cursor.execute("UPDATE entries SET status = ?, rating = ? WHERE id = ?", (status, rating, entry_id))
+    conn.commit()
+
+    cursor.close()
+    conn.close()
