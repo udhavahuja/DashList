@@ -80,31 +80,56 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    color: inherit;
+    color: var(--text);
+    transition: .2s;
     font-size: 1.3rem;
     display: flex;
     align-items: center;
 }
-
+.theme-btn:hover {
+    color: var(--primary);
+}
 .navbar{
     background: var(--card)!important;
     border-bottom: 1px solid var(--border);
 }
-
-.nav {
-    height: 70px;
-    width: 100vw;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--card);
-    border-bottom: 1px solid var(--border);
-    transition: background-color .3s ease, border-color .3s ease;
+.logoutBtn:hover {
+    color: var(--primary);
+}
+.nav-link.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary);
+    text-decoration: underline;
+}
+.nav-link {
+    transition: color .2s ease;
+    position: relative;
+}
+.nav-link:hover {
+    color: var(--primary) !important;
+}
+.navbar-nav {
+    gap: 1rem;
+}
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width .25s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.nav-link.active::after {
+    width: 100%;
 }
 
 /* Logo */
-
 .logo {
     display: flex;
     align-items: center;
@@ -116,7 +141,6 @@ body {
 }
 
 /* Navigation */
-
 .options ul {
     display: flex;
     align-items: center;
@@ -139,7 +163,6 @@ body {
 }
 
 /* Theme Button */
-
 .theme-btn {
     display: flex;
     justify-content: center;
