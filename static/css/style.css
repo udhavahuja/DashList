@@ -327,3 +327,20 @@ body {
     color: var(--text);
     border-color: var(--border);
 }
+
+/* Browse Section */
+.browse-search {
+    margin-bottom: 2rem;
+}
+.browse-search .form-control, .browse-search .form-select {
+    height: 52px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+}
+.browse-search .btn {
+    height: 52px;
+    border-radius: 12 px;
+    font-weight: 600;
+}

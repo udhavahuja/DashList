@@ -1,4 +1,10 @@
-{% block edit_card %}
+{% extends 'layout.html' %}
+
+{% block title %}
+    Library - Edit
+{% endblock %}
+
+{% block body %}
     <div class="card h-100">
         <img src="{{ item.cover_url }}" alt="{{ item.title }}" class="card-img-top">
 

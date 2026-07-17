@@ -5,36 +5,47 @@
 {% endblock %}
 
 {% block body %}
-    <form action="" method="get"> 
-        <!-- Action to be filled -->
-        <input type="text" placeholder="Search" name="query" required>
-        <label for="media_type">Media Type</label>
-        <select name="media_type" id="media_type" required>
-            <option value="movie">Movies</option>
-            <option value="tv">TV Shows</option>
-            <option value="book">Books</option>
-        </select>
-        <button type="submit">Search</button>
+    <h2 class="text-center my-4">Browse Media</h2>
+    <div class="browse-search">
+        <div class="container mt-4">
+            <form action="" method="get" class="row g-3 align-items-center"> 
+                <div class="col-md-6">
+                    <input class="form-control" type="text" placeholder="Search" name="query" required>
+                </div>
+                <div class="col-md-3">
+                    <!-- <label for="media_type">Media Type</label> -->
+                    <select name="media_type" id="media_type" class="form-select" required>
+                        <option value="movie">Movies</option>
+                        <option value="tv">TV Shows</option>
+                        <option value="book">Books</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    </form>
-
-    <div class="row g-4">
-        {% if media_type == 'book' %}
-            {% if books %}
-                {% for book in books %}
-                    <div class="col-md-3">
-                        {% include "components/book_card.html" %}
-                    </div>
-                {% endfor %}
+    <div class="container mt-4">
+        <div class="row g-4">
+            {% if media_type == 'book' %}
+                {% if books %}
+                    {% for book in books %}
+                        <div class="col-md-3">
+                            {% include "components/book_card.html" %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                {% if media_list %}
+                    {% for media in media_list %}
+                        <div class="col-md-3">
+                            {% include "components/media_card.html" %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
-        {% else %}
-            {% if media_list %}
-                {% for media in media_list %}
-                    <div class="col-md-3">
-                        {% include "components/media_card.html" %}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endif %}
+        </div>
     </div>
 {% endblock %}
