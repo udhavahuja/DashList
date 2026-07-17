@@ -1,8 +1,11 @@
 {% block stat_card %}
-    <div class="card shadow-sm h-100">
+    <div class="card shadow-sm h-100 stat-card">
         <div class="card-body text-center">
-            <h6 class="card-title">{{ title }}</h6>
-            <h2>{{ value }}</h2>
+            <div class="stat-header">
+                <i class="bi {{ icon }}"></i>
+            <span class="stat-title">{{ title }}</span>
+            </div>
+            <h2 class="stat-vlaue">{{ value }}</h2>
         </div>
     </div>
 {% endblock %}
