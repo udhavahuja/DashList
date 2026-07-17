@@ -344,3 +344,11 @@ body {
     border-radius: 12 px;
     font-weight: 600;
 }
+
+/* Library */
+.card-body {
+    padding: 1.25rem;
+}
+.card-footer {
+    padding: 1rem;
+}

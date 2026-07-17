@@ -25,14 +25,14 @@
             <form method="get" action="/library/edit">
                 <input type="hidden" name="api_id" value="{{ item.api_id }}">
                 <input type="hidden" name="source" value="{{ item.source }}">
-                <button class="btn btn-primary w-100">
+                <button class="btn btn-primary w-100 mb-2">
                     Edit
                 </button>
             </form>
             <form method="post" action="/library/delete">
                 <input type="hidden" name="api_id" value="{{ item.api_id }}">
                 <input type="hidden" name="source" value="{{ item.source }}">
-                <button class="btn btn-primary w-100">
+                <button class="btn btn-danger w-100">
                     Remove
                 </button>
             </form>
