@@ -9,6 +9,5 @@ def dashboard():
     user_id = session.get("user_id")
 
     content = dash_content(user_id)
-    print(content)
 
     return render_template("dashboard/dashboard.html", content = content)

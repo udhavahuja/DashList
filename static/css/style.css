@@ -23,9 +23,50 @@
     --primary: #6366f1;
     --primary-hover: #4f46e5;
 }
+
+/* ---------- BOOTSTRAP OVERRIDES ---------- */
+:root{
+    /* Backgrounds */
+    --bs-body-bg: var(--bg);
+    --bs-body-color: var(--text);
+    /* Borders */
+    --bs-border-color: var(--border);
+    /* Links */
+    --bs-link-color: var(--primary);
+    --bs-link-hover-color: var(--primary-hover);
+    /* Cards */
+    --bs-card-bg: var(--card);
+    --bs-card-color: var(--text);
+    --bs-card-border-color: var(--border);
+    /* Navbar */
+    --bs-navbar-color: var(--text);
+    --bs-navbar-hover-color: var(--primary);
+    --bs-navbar-active-color: var(--primary);
+    --bs-navbar-brand-color: var(--text);
+    --bs-navbar-brand-hover-color: var(--primary);
+    /* Dropdown */
+    --bs-dropdown-bg: var(--card);
+    --bs-dropdown-color: var(--text);
+    --bs-dropdown-border-color: var(--border);
+    --bs-dropdown-link-hover-bg: var(--bg-secondary);
+    --bs-dropdown-link-hover-color: var(--text);
+    /* Modal */
+    --bs-modal-bg: var(--card);
+    --bs-modal-color: var(--text);
+    --bs-modal-border-color: var(--border);
+    /* Forms */
+    --bs-body-color: var(--text);
+    --bs-secondary-bg: var(--card);
+    --bs-tertiary-bg: var(--bg-secondary);
+    --bs-primary: var(--primary);
+    --bs-success: var(--success);
+    --bs-warning: var(--warning);
+    --bs-danger: var(--danger);
+}
+
 /* Body */
 body {
-    background-color: var(--bg);
+    background: var(--bg);
     color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -45,6 +86,11 @@ body {
     align-items: center;
 }
 
+.navbar{
+    background: var(--card)!important;
+    border-bottom: 1px solid var(--border);
+}
+
 .nav {
     height: 70px;
     width: 100vw;
@@ -52,7 +98,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--bg);
+    background-color: var(--card);
     border-bottom: 1px solid var(--border);
     transition: background-color .3s ease, border-color .3s ease;
 }
@@ -155,3 +201,129 @@ body {
 .star-rating label:hover,
 .star-rating label:hover ~ label { color: #ffcc00; }
 
+/* Cards */
+.card {
+    background-color: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+.card-header {
+    background-color: var(--bg-secondary);
+    color: var(--text);
+    border-color: var(--border);
+}
+.card-footer {
+    background-color: var(--bg-secondary);
+    border-color: var(--border);
+}
+
+/* Buttons */
+.btn-primary{
+    background: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover{
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+/* Forms */
+.form-control,
+.form-select{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+.form-control:focus,
+.form-select:focus{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 .25rem rgba(99,102,241,.25);
+}
+.form-control::placeholder{
+    color: var(--text-muted);
+}
+
+/* Dropdown */
+.dropdown-menu{
+    background: var(--card);
+    border-color: var(--border);
+}
+.dropdown-item{
+    color: var(--text);
+}
+.dropdown-item:hover{
+    background: var(--bg-secondary);
+}
+
+/* Modals */
+.modal-content{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+.modal-header,
+.modal-footer{
+    border-color: var(--border);
+}
+
+/* Tables */
+.table{
+    color: var(--text);
+}
+.table>:not(caption)>*>*{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* List Group */
+.list-group-item{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* Alerts */
+.alert{
+    border:none;
+}
+
+/* Pagination */
+.page-link{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+.page-link:hover{
+    background: var(--bg-secondary);
+}
+
+/* Accordion */
+.accordion-item{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+.accordion-button{
+    background: var(--card);
+    color: var(--text);
+}
+.accordion-button:not(.collapsed){
+    background: var(--bg-secondary);
+    color: var(--primary);
+}
+
+/* Offcanvas */
+.offcanvas{
+    background: var(--card);
+    color: var(--text);
+}
+
+/* Toast */
+.toast{
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
