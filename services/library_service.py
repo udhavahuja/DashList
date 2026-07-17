@@ -80,8 +80,12 @@ def edit_library(user_id, api_id, source, status, rating):
     media_id = cursor.execute("SELECT id FROM media WHERE api_id = ? AND source = ?", (api_id, source)).fetchone()["id"]
     entry_id = cursor.execute("SELECT id FROM entries WHERE user_id = ? AND media_id = ?", (user_id, media_id)).fetchone()["id"]
 
-    cursor.execute("UPDATE entries SET status = ?, rating = ? WHERE id = ?", (status, rating, entry_id))
-    conn.commit()
+    if status:
+        cursor.execute("UPDATE entries SET status = ? WHERE id = ?", (status, entry_id))
+        conn.commit()
+    if rating:
+        cursor.execute("UPDATE entries SET rating = ? WHERE id = ?", (rating, entry_id))
+        conn.commit()
 
     cursor.close()
     conn.close()

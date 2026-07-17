@@ -45,7 +45,7 @@ def edit():
         status = request.form.get("status")
         rating = request.form.get("rating")
 
-        edit_library(user_id, api_id, source, status, rating)
+        edit_library(user_id=user_id, api_id=api_id, source=source, status=status, rating=rating)
 
         return redirect("/library")
         

@@ -9,6 +9,42 @@
     {% include "components/navbar.html" %}
 
     <main>
-        Welcome Back!!!!!!!!!
+        <h1>Welcome {{ content.name }}!!!</h1>
+        <br>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                {% set title = "Total Media" %}
+                {% set value = content.total_media %}
+                {% include "components/stat_card.html" %}
+            </div>
+            <div class="col-md-6">
+                {% set title = "Movies" %}
+                {% set value = content.movies %}
+                {% include "components/stat_card.html" %}
+            </div>
+            <div class="col-md-6">
+                {% set title = "TV Shows" %}
+                {% set value = content.tv %}
+                {% include "components/stat_card.html" %}
+            </div>
+            <div class="col-md-6">
+                {% set title = "Books" %}
+                {% set value = content.books %}
+                {% include "components/stat_card.html" %}
+            </div>
+            <div class="col-md-6">
+                {% set title = "Completed" %}
+                {% set value = content.completed %}
+                {% include "components/stat_card.html" %}
+            </div>
+            <div class="col-md-6">
+                {% set title = "In Progress" %}
+                {% set value = content.ongoing %}
+                {% include "components/stat_card.html" %}
+            </div>
+
+        </div>
     </main>
 {% endblock %}
