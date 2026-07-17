@@ -175,32 +175,6 @@ body {
     padding: 0;
 }
 
-/* Stars */
-.rating {
-    font-size: 2rem;
-}
-
-.star {
-    cursor: pointer;
-    color: #d4d4d8;
-    user-select: none;
-    transition: color 0.2s;
-}
-
-.star.active {
-    color: #fbbf24;
-}
-
-.star:hover {
-    cursor: pointer;
-}
-
-/* Highlight checked and hovered stars */
-
-.star-rating input:checked ~ label,
-.star-rating label:hover,
-.star-rating label:hover ~ label { color: #ffcc00; }
-
 /* Cards */
 .card {
     background-color: var(--card);
@@ -351,4 +325,57 @@ body {
 }
 .card-footer {
     padding: 1rem;
+}
+
+/* Edit Library */
+.form-select {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: .75rem;
+    margin-bottom: 1rem;
+}
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 .2rem rgba(99,102,241,.25);
+}
+.btn-cancel {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--primary);
+}
+.btn-cancel:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Stars */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-bottom: 1.5rem;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    font-size: 2rem;
+    color: #555;
+    cursor: pointer;
+    transition: .2s;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffd700;
+}
+.star-rating input:checked ~ label {
+    color: #ffd700;
+}
+
+/* Dashboard */
+.stat-card {
+    
 }

@@ -18,7 +18,20 @@
             <!-- Status -->
             <p class="status">Status: {{ item.status }}</p>
             <!-- Rating -->
-             <p class="status">Your Rating: {{ item.rating }} </p>
+             <p class="card-text">
+                Your Rating:
+                {% if item.rating %}
+                    {% for i in range(item.rating) %}
+                        <span class="text-warning">&#9733;</span>
+                    {% endfor %}
+
+                    {% for i in range(5-item.rating) %}
+                        <span class="text-secondary">&#9733</span>
+                    {% endfor %}
+                {% else %}
+                    <span style="color: var(--text-muted);">Not Rated</span>
+                {% endif %} 
+            </p>
         </div>
 
         <div class="card-footer">
