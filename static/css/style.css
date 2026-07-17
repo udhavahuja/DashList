@@ -444,3 +444,58 @@ body {
     color: var(--primary);
     transform: translateY(-4px);
 }
+
+/* Login */
+.auth-container{
+    max-width:420px;
+    margin:80px auto;
+    padding:2.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+.auth-header{
+    text-align:center;
+    margin-bottom:2rem;
+}
+.auth-logo{
+    width:140px;
+    margin-bottom:0.75rem;
+}
+.auth-header p{
+    color:var(--text-secondary);
+}
+.auth-switch{
+    text-align:center;
+    margin-bottom:2rem;
+    justify-content: center;
+}
+.auth-switch .active{
+    color:var(--primary);
+    font-weight:600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.auth-switch a{
+    color:var(--text-secondary);
+    text-decoration:none;
+}
+.auth-switch a:hover{
+    color:var(--primary-color);
+}
+.auth-footer{
+    margin-top:2rem;
+    text-align:center;
+}
+.auth-footer a{
+    color:var(--primary-color);
+}
+.switchBtn {
+    text-decoration: none;
+    color: var(--text);
+}
+.active{
+    font-weight:600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}

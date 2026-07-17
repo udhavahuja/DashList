@@ -5,24 +5,41 @@
 {% endblock %}
 
 {% block body %}
-    <form action="/register" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text"></input>
+    <div class="container auth-container">
+        <div class="auth-header">
+            <img src="{{ url_for('static', filename='images/DashList_logo.png')}}" alt="DashList Logo" class="auth-logo">
+            <p>Track your favourite media in one place</p>
         </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="email" placeholder="Email" type="text"></input>
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password"></input>
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password"></input>
-        </div>
-        <button class="btn btn-primary" type="submit">Register</button>
-    </form>
 
-    <p>
-        Already have an account?
-        <a href="/login">Login Here</a>
-    </p>
+        <div class="auto-switch">
+            <a href="/login" class="switchBtn">Login</a>
+            <span>|</span>
+            <span class="active">Register</span>
+        </div>
+
+        <form action="/register" method="post">
+            <div class="mb-4">
+                <label>Username</label>
+                <input autocomplete="off" autofocus class="form-control" name="username" type="text"></input>
+            </div>
+            <div class="mb-4">
+                <label>Email</label>
+                <input class="form-control" name="email" type="email"></input>
+            </div>
+            <div class="mb-4">
+                <label>Password</label>
+                <input class="form-control" name="password" type="password"></input>
+            </div>
+            <div class="mb-4">
+                <label>Confirm Password</label>
+                <input class="form-control" name="confirmation" type="password"></input>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Register</button>
+        </form>
+
+        <p class="auth-footer">
+            Already have an account?
+            <a href="/login">Login Here</a>
+        </p>
+    </div>
 {% endblock %}
