@@ -3,7 +3,6 @@ import os
 
 load_dotenv()
 
-DATABASE_PATH = "instance/media_vault.db"
 SECRET_SESSION_KEY = os.getenv("SECRET_SESSION_KEY")
 
 #TMDB
