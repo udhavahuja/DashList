@@ -92,6 +92,7 @@ body {
 .navbar{
     background: var(--card)!important;
     border-bottom: 1px solid var(--border);
+    color: var(--text);
 }
 .logoutBtn:hover {
     color: var(--primary);
@@ -128,6 +129,16 @@ body {
 .nav-link.active::after {
     width: 100%;
 }
+.navbar-toggler {
+    border: none;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar-toggler-icon-custom {
+    font-size: 2rem;
+    color: var(--text);
+}
 
 /* Logo */
 .logo {
@@ -162,6 +173,10 @@ body {
     color: var(--primary);
 }
 
+.nav-link, .logoutBtn {
+    color: var(--text) !important;
+}
+
 /* Theme Button */
 .theme-btn {
     display: flex;
@@ -192,10 +207,12 @@ body {
 .logoutBtn {
     background: none;
     border: none;
-    color: inherit;
+    color: var(--text);
     font: inherit;
     cursor: pointer;
     padding: 0;
+    opacity: .85;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 /* Cards */
@@ -498,4 +515,20 @@ body {
     font-weight:600;
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        margin-top: 1rem;
+        text-align: center;
+    }
+    .navbar-nav .nav-item {
+        margin: .5rem 0;
+    }
+    .logoutBtn {
+        width: 100%;
+    }
+    .theme-btn {
+        margin-top: .5rem;
+    }
 }

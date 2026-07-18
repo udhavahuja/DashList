@@ -1,37 +1,62 @@
-{% block nav %}
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <div class="logo">
-                <a href="/">
-                    <img src="{{ url_for('static', filename='images/DashList_logo.png')}}" alt="Dashlist logo" id="logo">
-                </a>
-            </div>
-            <div class="options">
-                <ul>
-                    <li>
-                        <a href="/" class="nav-link {% if request.endpoint == 'dashboard.dashboard' %}active{% endif %}">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/browse" class="nav-link {% if request.endpoint == 'browse.browse' %}active{% endif %}">Browse</a>
-                    </li>
-                    <li>
-                        <a href="/library" class="nav-link {% if request.endpoint == 'library.library' %}active{% endif %}">Library</a>
-                    </li>
-                    <li>
-                        <form action="{{ url_for('auth_bp.logout') }}" method="POST">
-                            <button type="submit" class="logoutBtn">Logout</button>
-                        </form>
-                    </li>
-                    <li>
-                        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                            <i class="bi bi-moon-fill" id="theme-icon"></i>
-                        </button>
-                    </li>
-                    <li>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
 
-                    </li>
-                </ul>
-            </div>
+        <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='images/DashList_logo.png') }}"
+                 alt="DashList Logo"
+                 id="logo">
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <i class="bi bi-list navbar-toggler-icon-custom"></i>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+            <ul class="navbar-nav align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'dashboard.dashboard' %}active{% endif %}" href="/">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'browse.browse' %}active{% endif %}" href="/browse">
+                        Browse
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'library.library' %}active{% endif %}" href="/library">
+                        Library
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <form action="{{ url_for('auth_bp.logout') }}" method="POST">
+                        <button type="submit" class="logoutBtn">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+
+                <li class="nav-item">
+                    <button id="theme-toggle" class="theme-btn">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
+                </li>
+
+            </ul>
+
         </div>
-    </nav>
-{% endblock %}
+
+    </div>
+</nav>
