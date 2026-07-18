@@ -1,10 +1,12 @@
 from flask import Blueprint, request, redirect, session, render_template
 
+from utils.decorators import login_required
 from services.library_service import add_library, get_library, make_editable, edit_library, delete_library
 
 library_bp = Blueprint("library_bp", __name__)
 
 @library_bp.route("/library/add", methods = ["POST"])
+@login_required
 def add():
     user_id = session.get("user_id")
     source = request.form.get("source")
@@ -21,6 +23,7 @@ def add():
     return redirect("/library")
 
 @library_bp.route("/library")
+@login_required
 def lib():
     user_id = session.get("user_id")
     library_items = get_library(user_id)
@@ -28,6 +31,7 @@ def lib():
     return render_template("library/library.html", library_items=library_items)
 
 @library_bp.route("/library/edit", methods = ["GET", "POST"])
+@login_required
 def edit():
     if request.method == "GET":
         user_id = session.get("user_id")
@@ -50,6 +54,7 @@ def edit():
         return redirect("/library")
         
 @library_bp.route("/library/delete", methods=["POST"])
+@login_required
 def delete_entry():
     user_id = session.get("user_id")
     api_id = request.form.get("api_id")

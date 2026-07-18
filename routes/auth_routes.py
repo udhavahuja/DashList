@@ -1,5 +1,4 @@
-from flask import Blueprint, request, jsonify, render_template, session, redirect
-from flask_session import Session
+from flask import Blueprint, request, render_template, session, redirect, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from config.database import get_db
@@ -20,14 +19,17 @@ def register():
         confirmation = request.form.get("confirmation")
 
         if not username or not email or not password or not confirmation:
-            return jsonify({"error" : "All fields required"}), 400
+            flash("All fields required","danger")
+            return redirect("/register")
         
         users = cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
         if users.fetchone() is not None:
-            return jsonify({"error" : "User already registered"}), 409
+            flash("User already registered","warning")
+            return redirect("/login")
         
         if password != confirmation:
-            return jsonify({"error" : "Password don't match"}), 400
+            flash("Passwords don't match","danger")
+            return redirect("/register")
 
         hashed_password = generate_password_hash(password)
 
@@ -41,7 +43,8 @@ def register():
         cursor.close()
         conn.close()
 
-        return redirect("/")
+        flash("Account created. Please log-in", "success")
+        return redirect("/login")
     
     else:
         return render_template("auth/register.html")
@@ -56,16 +59,19 @@ def login():
         mail = request.form.get("email")
         password = request.form.get("password")
         if not mail or not password:
-            return jsonify({"error" : "All fields required"}), 400
+            flash("All fields required","danger")
+            return redirect("/login")
         
         rows = cursor.execute("SELECT * FROM users WHERE email = ?", (mail,))
         user = rows.fetchone()
 
         if user is None:
-            return jsonify({"error" : "Invalid Username/Password"}), 400
+            flash("Invalid Email/Password","danger")
+            return redirect("/login")
         
         if not check_password_hash(user["password_hash"], password):
-            return jsonify({"error" : "Invalid Username/Password"}), 400
+            flash("Invalid Email/Password","danger")
+            return redirect("/login")
         
         session["user_id"] = user["id"]
 

@@ -1,10 +1,12 @@
 from flask import Blueprint, request, render_template
 
+from utils.decorators import login_required
 from services.browse_service import search_books, search_media
 
 browse_bp = Blueprint("browse_bp", __name__)
 
 @browse_bp.route("/browse", methods = ["GET"])
+@login_required
 def browse():
     query = request.args.get('query')
     if query is None:
