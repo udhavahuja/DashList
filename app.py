@@ -15,13 +15,16 @@ from routes.dashboard_routes import dashboard_bp
 
 app = Flask(__name__)
 
-with get_db as conn:
-    cursor = conn.cursor()
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='users';")
+conn = get_db()
+cursor = conn.cursor()
 
-    if cursor.fetchone() is None:
-        with open("schema.sql", "r") as f:
-            conn.executescript(f.read())
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='users';")
+if cursor.fetchone() is None:
+    with open("schema.sql", "r") as f:
+        conn.executescript(f.read())
+
+cursor.close()
+conn.close()
 
 app.secret_key = SECRET_SESSION_KEY
 app.config["SESSION_TYPE"] = "filesystem"
