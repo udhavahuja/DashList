@@ -49,38 +49,38 @@ DashList is a personal media tracking web application built with **Flask** that 
 
 <h3>Login</h3>
 <p align="center">
-    <img src ="static/images/screenshots/Login.png" width="700">
+    <img src ="screenshots/Login.png" width="700">
 </p>
 
 <h3>Register</h3>
 <p align="center">
-    <img src ="static/images/screenshots/Register.png" width="700">
+    <img src ="screenshots/Register.png" width="700">
 </p>
 
 <h3>Dashboard</h3>
 <p align="center">
-    <img src ="static/images/screenshots/Dashboard.png" width="700">
+    <img src ="screenshots/Dashboard.png" width="700">
 </p>
 
 <h3>Browse</h3>
 <p align="center">
-    <img src ="static/images/screenshots/browse-movies.png" width="32%">
-    <img src ="static/images/screenshots/browse-tv.png" width="32%">
-    <img src ="static/images/screenshots/browse-books.png" width="32%">
+    <img src ="screenshots/browse-movies.png" width="32%">
+    <img src ="screenshots/browse-tv.png" width="32%">
+    <img src ="screenshots/browse-books.png" width="32%">
 </p>
 
 <h3>Library</h3>
 <p align="center">
-    <img src ="static/images/screenshots/library.png" width="48%">
-    <img src ="static/images/screenshots/library-edit.png" width="48%">
+    <img src ="screenshots/library.png" width="48%">
+    <img src ="screenshots/library-edit.png" width="48%">
 </p>
 
 <h3>Dark Mode</h3>
 <p align="center">
-    <img src ="static/images/screenshots/Dashboard-dark.png" width="23.5%">
-    <img src ="static/images/screenshots/browse-dark.png" width="23.5%">
-    <img src ="static/images/screenshots/library-dark.png" width="23.5%">
-    <img src ="static/images/screenshots/library-edit-dark.png" width="23.5%">
+    <img src ="screenshots/Dashboard-dark.png" width="23.5%">
+    <img src ="screenshots/browse-dark.png" width="23.5%">
+    <img src ="screenshots/library-dark.png" width="23.5%">
+    <img src ="screenshots/library-edit-dark.png" width="23.5%">
 </p>
 
 ## Future Improvements
