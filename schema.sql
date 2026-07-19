@@ -1,0 +1,29 @@
+CREATE TABLE users(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+username VARCHAR NOT NULL,
+email VARCHAR NOT NULL UNIQUE,
+password_hash TEXT NOT NULL,
+created_at TIMESTAMP);
+
+CREATE TABLE media(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+source VARCHAR NOT NULL,
+api_id VARCHAR NOT NULL,
+title TEXT NOT NULL,
+type VARCHAR NOT NULL,
+description TEXT,
+release_year INTEGER,
+cover_url TEXT, authors TEXT);
+
+CREATE TABLE entries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    media_id INTEGER,
+    status VARCHAR,
+    rating INTEGER CHECK (rating BETWEEN 1 AND 5),
+    review TEXT,
+    added_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (media_id) REFERENCES media(id)
+);
