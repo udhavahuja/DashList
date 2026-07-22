@@ -1,5 +1,9 @@
 # DashList
 
+#### Video Demo: https://youtu.be/a0Gxhq8n-Vk
+
+#### Description:
+
 DashList is a personal media tracking web application built with **Flask** that lets users organize movies, TV shows, and books in one place. Whether you're planning what to watch next, keeping track of your current reads, or revisiting your favorites, DashList makes managing your entertainment library simple and intuitive.
 
 ## Features
