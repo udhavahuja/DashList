@@ -96,6 +96,14 @@ DashList is a personal media tracking web application built with **Flask** that 
 
 This project was developed as the **CS50 Final Project** and is intended for educational purposes.
 
+## Deployment Notes
+
+The live demo is hosted on Render's free tier using SQLite
+
+Since Render's free web services do not support persistent disks, the SQLite databases is stored on an ephmeral filesystem. As a result, user accounts and media ;ibraries in the live demo may occasionally reset after service restarts or redepolyments.
+
+This is a limitation of hosting environment rather than application itself.
+
 ## Author
 
 **Udhav Ahuja**
